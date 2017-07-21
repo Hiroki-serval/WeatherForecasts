@@ -76,6 +76,27 @@ public class WeatherForecast {
             public final Value min;
             public final Value max;
 
+            @Override
+            public String toString() {
+                StringBuffer sb = new StringBuffer();
+
+                if (min.celsius != null) {
+                    sb.append(min.celsius);
+                } else {
+                    sb.append(" - ");
+                }
+                sb.append("℃ / ");
+
+                if (max.celsius != null) {
+                    sb.append(max.celsius);
+                } else {
+                    sb.append(" - ");
+                }
+                sb.append("℃ / ");
+
+                return sb.toString();
+            }
+
             public Temperature(JSONObject jsonObject) throws JSONException {
                 if (!jsonObject.isNull("min")) {
                     min = new Value(jsonObject.getJSONObject("min"));
